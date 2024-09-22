@@ -12,7 +12,22 @@ const server = jsonServer.create()
 // const router = jsonServer.router(db)
 
 // Comment out to allow write operations
-const router = jsonServer.router({ tasks: [], importances: [] }); // dados na memória
+const router = jsonServer.router({ tasks: [], importances: [{
+            "id": "1",
+            "name": "Muito Alto"
+        },
+        {
+            "id": "2",
+            "name": "Alto"
+        },
+        {
+            "id": "3",
+            "name": "Médio"
+        },
+        {
+            "id": "4",
+            "name": "Baixo"
+        }] }); // dados na memória
 
 const middlewares = jsonServer.defaults()
 
