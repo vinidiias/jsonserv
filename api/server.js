@@ -1,4 +1,4 @@
-// See https://github.com/typicode/json-server#module
+// server.js
 const jsonServer = require('json-server')
 
 const server = jsonServer.create()
@@ -12,22 +12,15 @@ const server = jsonServer.create()
 // const router = jsonServer.router(db)
 
 // Comment out to allow write operations
-const router = jsonServer.router({ tasks: [], importances: [{
-            "id": "1",
-            "name": "Muito Alto"
-        },
-        {
-            "id": "2",
-            "name": "Alto"
-        },
-        {
-            "id": "3",
-            "name": "Médio"
-        },
-        {
-            "id": "4",
-            "name": "Baixo"
-        }] }); // dados na memória
+const router = jsonServer.router({ 
+    tasks: [], 
+    importances: [
+        { "id": "1", "name": "Muito Alto" },
+        { "id": "2", "name": "Alto" },
+        { "id": "3", "name": "Médio" },
+        { "id": "4", "name": "Baixo" }
+    ] 
+}); // dados na memória
 
 const middlewares = jsonServer.defaults()
 
@@ -37,6 +30,7 @@ server.use(jsonServer.rewriter({
     '/api/*': '/$1',
     '/blog/:resource/:id/show': '/:resource/:id'
 }))
+
 server.use(router)
 server.listen(3000, () => {
     console.log('JSON Server is running')
